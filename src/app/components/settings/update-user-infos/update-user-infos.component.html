@@ -1,0 +1,21 @@
+<h2 class="text-center text-brown-primary-color">YOUR ACCOUNT SETTINGS</h2>
+
+<form [formGroup]="updateUserForm">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Name" type="text" formControlName="name">
+      <mat-error *ngIf="name.errors?.required && name.touched">This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Email address" formControlName="email">
+      <mat-error *ngIf="email.errors?.required && email.touched">This field is required</mat-error>
+      <mat-error *ngIf="email.errors?.email && email.touched">Please enter a valid email</mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end align-items-center w-100">
+        <button mat-flat-button class="bg-brown-primary-color text-light my-3" (click)="updateUser()">
+          <div class="spinner-border text-light mr-1" role="status" *ngIf="loading"></div>
+          Save Settings
+        </button>
+    </div>
+</form>

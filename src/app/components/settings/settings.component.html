@@ -1,0 +1,19 @@
+<div class="container" *ngIf="user; else spinner">
+  <div class="row">
+    <div class="col-md-8 mx-auto mt-5" *ngIf="user">
+      <div class="p-3 mb-2">
+          <app-update-user-infos [userName]="user.name" [userEmail]="user.email"></app-update-user-infos>
+      </div>
+      <hr>
+      <div class="p-3 mt-2">
+          <app-update-user-password></app-update-user-password>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div>
+    <mat-spinner class="style-spinner"></mat-spinner>
+  </div>
+</ng-template>

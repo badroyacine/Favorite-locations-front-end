@@ -1,0 +1,27 @@
+<h2 mat-dialog-title class="text-brown-primary-color font-weight-bold">
+  <mat-icon>edit</mat-icon> Edit Location
+</h2>
+
+<div mat-dialog-content>
+  <div class="alert alert-danger" *ngIf="showErrors">{{ errorMessage }}</div>
+
+  <form [formGroup]="editLocationForm">
+    <mat-form-field class="w-100">
+      <input matInput type="text" placeholder="Name" (keydown.enter)="$event.preventDefault()" formControlName="locationName" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+      <mat-error *ngIf="locationName.errors?.required && locationName.touched">This field is required</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="w-100">
+      <textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
+      <mat-error *ngIf="comment.errors?.required && comment.touched">This field is required</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<hr>
+<div mat-dialog-actions class="d-flex justify-content-end align-items-center w-100">
+  <button mat-raised-button class="mr-1" mat-dialog-close>Cancel</button>
+  <button mat-raised-button cdkFocusInitial class="bg-brown-primary-color text-light" (click)="editLocation()">
+    <div class="spinner-border text-light mr-1" role="status" *ngIf="loading"></div>
+    Edit Location
+  </button>
+</div>

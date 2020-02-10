@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+h2{ font-family: 'Josefin Sans', sans-serif !important;}
+
+.text-brown-primary-color{ color: #824026 !important;}
+.bg-brown-primary-color{ background-color: #824026; }
+
+.text-brown-theard-color{ color: #F3A800; }
+
+.bg-brown-secondary-color{ background-color: #431F07; }
+.bg-brown-theard-color{ background-color: #F3A800; }
+
+.bg-blue-primary-color{ background-color: #334E69; }
+
+.mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #824026 !important;
+}
+  
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #334E69 !important;
+} 
+  
+.mat-form-field.mat-focused .mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #824026 !important;
+}
+
+.snackbar-success{
+    background-color: #fff;
+    color: green;
+    border: 1px solid green;
+}
+
+.snackbar-danger{
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+}
+
+.spinner-border{
+    width: 1rem !important;
+    height: 1rem !important;
+    border: .15rem solid currentColor !important;
+    border-right-color: transparent !important;
+}

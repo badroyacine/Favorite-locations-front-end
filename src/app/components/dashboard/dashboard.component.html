@@ -1,0 +1,53 @@
+<div class="parent-container">
+  <button mat-raised-button class="bg-blue-primary-color text-light position-btn" (click)="addLocation()">
+    <mat-icon>add</mat-icon> Add Favorite Location
+  </button>
+
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" [styles]="styles" (mapClick)="onMapClicked($event)">
+    <agm-marker *ngFor="let location of locations" [latitude]="location.latitude" [longitude]="location.longitude">
+      <agm-snazzy-info-window [maxWidth]="500" [maxHeight]="200" padding="15px" [closeWhenOthersOpen]="true">
+        <ng-template>
+          <div class="w-100">
+            <div class="location-name">{{ location.locationName }}</div>
+            <div class="location-description">{{ location.comment }}</div>
+          </div>
+        </ng-template>
+      </agm-snazzy-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+
+<div class="container">
+  <div class="row mt-3">
+    <div class="col">
+        <h2 class="mb-3 text-brown-primary-color">Your Favorite Places</h2>
+        <table class="table w-90 mx-auto" *ngIf="locations.length > 0 || page > 1;else no_locations">
+            <thead class="bg-blue-primary-color text-light">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let location of locations | paginate: { itemsPerPage: 8, currentPage: page }">
+                <td>{{ location.locationName }}</td>
+                <td>{{ location.comment }}</td>
+                <td>
+                  <button mat-mini-fab color="primary" class="mr-1" (click)="editLocation(location)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="warn" (click)="deleteLocation(location)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+              <tr><pagination-controls (pageChange)="page = $event" autoHide="true"responsive="true"></pagination-controls></tr>
+            </tbody>
+          </table>
+          <ng-template #no_locations>
+            <p>You have no locations for now! But you can create whenever you want :)</p>
+          </ng-template>
+    </div>
+  </div>
+</div>

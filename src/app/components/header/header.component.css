@@ -1,0 +1,7 @@
+nav.navbar{ background-color: #ECD8B8; }
+.nav-item{ cursor: pointer; }
+
+.navbar-light .navbar-nav .active>.nav-link{
+    color: #431F07;
+    font-weight: 500;
+}

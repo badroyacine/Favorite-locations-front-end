@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6 mx-auto mt-5">
+    <form [formGroup]="loginForm" class="p-5"> 
+
+      <h2 class="mb-4 display-4 text-center text-brown-primary-color">Account Login</h2>
+
+      <div class="alert alert-danger" role="alert" *ngIf="showDangerMessage">
+          {{ errorMessage }}
+      </div>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Your email" formControlName="email">
+        <mat-error *ngIf="email.errors?.required && email.touched">This field is required</mat-error>
+        <mat-error *ngIf="email.errors?.email && email.touched">Please enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Your password" type="password" formControlName="password">
+        <mat-error *ngIf="password.errors?.required && password.touched">This field is required</mat-error>
+        <mat-error *ngIf="password.errors?.minlength && password.touched">The password must be at least 6 characters</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button class="w-100 my-3 bg-brown-primary-color" color="primary" (click)="signInUser()">Sign In</button>
+      <p class="text-center">You don't have an account yet ? <a routerLink="/register" class="text-brown-theard-color">Register</a></p>
+    </form>   
+  </div>
+</div>

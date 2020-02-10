@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-6 mx-auto mt-5">
+    <form [formGroup]="registerForm" class="p-5"> 
+
+      <h2 class="mb-4 display-4 text-center text-brown-primary-color">Create New Account</h2>
+
+      <div class="alert alert-danger" role="alert" *ngIf="showDangerMessage">
+          {{ errorMessage }}
+      </div>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Your name" formControlName="name">
+        <mat-error *ngIf="name.errors?.required && name.touched">This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Your email" formControlName="email">
+        <mat-error *ngIf="email.errors?.required && email.touched">This field is required</mat-error>
+        <mat-error *ngIf="email.errors?.email && email.touched">Please enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Your password" type="password" formControlName="password">
+        <mat-error *ngIf="password.errors?.required && password.touched">This field is required</mat-error>
+        <mat-error *ngIf="password.errors?.minlength && password.touched">The password must be at least 6 characters</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Confirm your password" type="password" formControlName="passwordConfirm">
+        <mat-error *ngIf="passwordConfirm.errors?.required && passwordConfirm.touched">This field is required</mat-error>
+        <mat-error *ngIf="passwordConfirm.errors?.minlength && passwordConfirm.touched">The password must be at least 6 characters</mat-error>
+        <mat-error *ngIf="passwordConfirm.errors?.misMatch && !passwordConfirm.errors?.required && !passwordConfirm.errors?.minlength">
+          Password do not match
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button class="w-100 my-3 bg-brown-primary-color" color="primary" (click)="signUpUser()">Register</button>
+      <p class="text-center">You have an account ? <a routerLink="/login" class="text-brown-theard-color">Login</a></p>
+
+    </form>   
+  </div>
+</div>

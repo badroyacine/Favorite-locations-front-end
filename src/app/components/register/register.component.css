@@ -1,0 +1,9 @@
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+    background-color: #824026;
+}
+
+a:hover {
+    color: #824026;
+    text-decoration: none;
+}
+
